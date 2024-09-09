@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://bglgrlmv6yyyu"]
+
+[ext_resource type="Shader" path="res://scenes/shaders/lightning.gdshader" id="1_2ubfj"]
+[ext_resource type="Script" path="res://scenes/shaders/Lightning.gd" id="2_15jms"]
+
+[sub_resource type="Gradient" id="Gradient_k6r1j"]
+offsets = PackedFloat32Array(0, 0.313869, 0.510949, 0.678832, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.0745098, 1, 1, 1, 0.2, 0.631373, 0.862745, 1, 0, 0.745098, 0.894118, 0.615686, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wgukg"]
+gradient = SubResource("Gradient_k6r1j")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_444r4"]
+noise_type = 0
+frequency = 0.004
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sshhd"]
+seamless = true
+noise = SubResource("FastNoiseLite_444r4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pcls"]
+shader = ExtResource("1_2ubfj")
+shader_parameter/speed = 0.0
+shader_parameter/variation = 0.3
+shader_parameter/width = 1.5
+shader_parameter/color_gradient = SubResource("GradientTexture2D_wgukg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_sshhd")
+
+[sub_resource type="Gradient" id="Gradient_513hs"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mw4go"]
+gradient = SubResource("Gradient_513hs")
+
+[node name="Lightning" type="TextureRect"]
+material = SubResource("ShaderMaterial_2pcls")
+offset_right = 1080.0
+offset_bottom = 1920.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_mw4go")
+script = ExtResource("2_15jms")

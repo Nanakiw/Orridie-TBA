@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi5137ph2kw4c"]
+
+[ext_resource type="Shader" path="res://shaders/shining.gdshader" id="1_2hf58"]
+[ext_resource type="Script" path="res://scenes/MainLog.gd" id="2_m016l"]
+[ext_resource type="Script" path="res://scenes/MainTextContainer.gd" id="3_xsm5j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbxu5"]
+shader = ExtResource("1_2hf58")
+shader_parameter/speed = 0.2
+shader_parameter/tint = Vector4(0.95, 0.95, 0.75, 0.5)
+shader_parameter/span = 1.0
+shader_parameter/active = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhfd4"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.498039, 0.360784, 0.152941, 1)
+
+[node name="MainTextContainer" type="MarginContainer"]
+material = SubResource("ShaderMaterial_bbxu5")
+use_parent_material = true
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yhfd4")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 54
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 54
+theme_override_constants/margin_bottom = 8
+
+[node name="Log" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("2_m016l")
+
+[node name="MainTextContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Log"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("3_xsm5j")

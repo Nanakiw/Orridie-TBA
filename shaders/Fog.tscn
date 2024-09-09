@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bonu2o1it34fk"]
+
+[ext_resource type="Shader" path="res://scenes/shaders/fog.gdshader" id="1_recdb"]
+
+[sub_resource type="Gradient" id="Gradient_xxl02"]
+offsets = PackedFloat32Array(0, 0.489051)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wiba3"]
+seed = 2
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xnyny"]
+width = 256
+height = 256
+seamless = true
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_xxl02")
+noise = SubResource("FastNoiseLite_wiba3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e66ry"]
+shader = ExtResource("1_recdb")
+shader_parameter/density = 0.562
+shader_parameter/speed = Vector2(0.1, 0.1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_xnyny")
+
+[sub_resource type="Gradient" id="Gradient_513hs"]
+colors = PackedColorArray(0, 0, 0, 0.654902, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mw4go"]
+gradient = SubResource("Gradient_513hs")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.1, 0.1)
+
+[node name="Fog" type="TextureRect"]
+material = SubResource("ShaderMaterial_e66ry")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -960.0
+offset_right = 540.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_mw4go")

@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://duqfl3yhjvbbe"]
+
+[ext_resource type="Shader" path="res://shaders/shining.gdshader" id="1_pwagc"]
+[ext_resource type="Script" path="res://scenes/Log.gd" id="2_y78f8"]
+[ext_resource type="FontFile" uid="uid://douao33hr17vq" path="res://assets/fonts/day_roman/DAYROM__.ttf" id="3_1gc7t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbxu5"]
+shader = ExtResource("1_pwagc")
+shader_parameter/speed = 0.2
+shader_parameter/tint = Vector4(0.95, 0.95, 0.75, 0.5)
+shader_parameter/span = 1.0
+shader_parameter/active = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhfd4"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_uhj4j"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7mwgg"]
+gradient = SubResource("Gradient_uhj4j")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="MarginContainer" type="MarginContainer"]
+material = SubResource("ShaderMaterial_bbxu5")
+use_parent_material = true
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yhfd4")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+modulate = Color(1, 1, 1, 0.12549)
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_7mwgg")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Log" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("2_y78f8")
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/Log"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_1gc7t")
+theme_override_font_sizes/font_size = 32
+text = "Vous perdez 1 PV.
+Votre ennemi se transforme en chaise et vous frappe !
+Vous buvez un bon café et regagnez 150 PV.
+Vous etes à court d'energie !
+Il est temps d'aller se reposer...
+Hohohoooo !!!
+Heheeeeee !"

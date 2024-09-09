@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://fci5nxt5fv6n"]
+
+[ext_resource type="PackedScene" uid="uid://bi5137ph2kw4c" path="res://scenes/main_text_container.tscn" id="1_aqkcx"]
+[ext_resource type="PackedScene" uid="uid://duqfl3yhjvbbe" path="res://scenes/margin_container.tscn" id="1_h0vyj"]
+[ext_resource type="Texture2D" uid="uid://ba04nedlsttxl" path="res://assets/icons/UI/_7cdd5f73-5966-47e5-b36b-c0e12157c229.jpg" id="3_0n4im"]
+[ext_resource type="Texture2D" uid="uid://ciqf0d3lckyja" path="res://assets/icons/UI/_35175d21-0b8d-4411-94a8-d8a837fe8a50.jpg" id="4_g8sh0"]
+[ext_resource type="Texture2D" uid="uid://23bod6rxxwq8" path="res://assets/icons/UI/_12d1e27b-e1b3-4a5a-a511-d60ebfc47e31.jpg" id="5_6meb0"]
+[ext_resource type="Texture2D" uid="uid://5ojt1f8ae1d" path="res://assets/icons/UI/_dd3cee7e-7fb0-423b-840e-5749334571bd.jpg" id="6_rewgk"]
+
+[sub_resource type="Gradient" id="Gradient_3ay3q"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8131h"]
+gradient = SubResource("Gradient_3ay3q")
+
+[node name="Ingame" type="Node2D"]
+
+[node name="BGColor" type="TextureRect" parent="."]
+modulate = Color(0.133333, 0.133333, 0.133333, 1)
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = SubResource("GradientTexture2D_8131h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 1080.0
+offset_bottom = 1920.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="LogContainer" parent="VBoxContainer" instance=ExtResource("1_h0vyj")]
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 2
+
+[node name="MainTextContainer" parent="VBoxContainer" instance=ExtResource("1_aqkcx")]
+layout_mode = 2
+
+[node name="IconsContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/IconsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Stats" type="TextureButton" parent="VBoxContainer/IconsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_0n4im")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hour" type="TextureButton" parent="VBoxContainer/IconsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_g8sh0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Minimap" type="TextureButton" parent="VBoxContainer/IconsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("5_6meb0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Bag" type="TextureButton" parent="VBoxContainer/IconsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("6_rewgk")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Bag2" type="TextureButton" parent="VBoxContainer/IconsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("6_rewgk")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Bag3" type="TextureButton" parent="VBoxContainer/IconsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("6_rewgk")
+ignore_texture_size = true
+stretch_mode = 5
