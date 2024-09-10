@@ -29,7 +29,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="LogContainer" parent="VBoxContainer" instance=ExtResource("1_h0vyj")]
-custom_minimum_size = Vector2(128, 192)
+custom_minimum_size = Vector2(128, 256)
 layout_mode = 2
 
 [node name="MainTextContainer" parent="VBoxContainer" instance=ExtResource("1_aqkcx")]

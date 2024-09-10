@@ -71,7 +71,7 @@ size_flags_vertical = 3
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_1gc7t")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "Vous perdez 1 PV.
 Votre ennemi se transforme en chaise et vous frappe !
 Vous buvez un bon café et regagnez 150 PV.
