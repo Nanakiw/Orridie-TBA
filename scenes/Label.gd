@@ -96,7 +96,7 @@ func read_text():
 		print(str(current_text))
 		if visible_ratio < 1.0:
 			visible_characters += 1.0
-			text = "[fade start=" + str(i-10) + " length=10]" + final_text + "[/fade]"
+			text = "[fade start=" + str(i-8) + " length=9]" + final_text + "[/fade]"
 		if visible_ratio >= 1.0:
 			text = final_text
 			emit_signal("showed_text")

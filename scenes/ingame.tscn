@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://fci5nxt5fv6n"]
+[gd_scene load_steps=13 format=3 uid="uid://fci5nxt5fv6n"]
 
 [ext_resource type="PackedScene" uid="uid://bi5137ph2kw4c" path="res://scenes/main_text_container.tscn" id="1_aqkcx"]
 [ext_resource type="PackedScene" uid="uid://duqfl3yhjvbbe" path="res://scenes/margin_container.tscn" id="1_h0vyj"]
+[ext_resource type="Texture2D" uid="uid://wbdadnlxat0" path="res://assets/backgrounds/Nature Landscapes Free Pixel Art/nature_1/orig.png" id="1_wh8tf"]
+[ext_resource type="Texture2D" uid="uid://b4vwwl3u3hmo7" path="res://assets/icons/UI/up_arrow.png" id="2_rq6gf"]
+[ext_resource type="FontFile" uid="uid://douao33hr17vq" path="res://assets/fonts/day_roman/DAYROM__.ttf" id="2_vw2et"]
 [ext_resource type="Texture2D" uid="uid://ba04nedlsttxl" path="res://assets/icons/UI/_7cdd5f73-5966-47e5-b36b-c0e12157c229.jpg" id="3_0n4im"]
+[ext_resource type="Texture2D" uid="uid://cihv8hhai0kv6" path="res://assets/icons/UI/left_arrow.png" id="3_bsd53"]
 [ext_resource type="Texture2D" uid="uid://ciqf0d3lckyja" path="res://assets/icons/UI/_35175d21-0b8d-4411-94a8-d8a837fe8a50.jpg" id="4_g8sh0"]
 [ext_resource type="Texture2D" uid="uid://23bod6rxxwq8" path="res://assets/icons/UI/_12d1e27b-e1b3-4a5a-a511-d60ebfc47e31.jpg" id="5_6meb0"]
 [ext_resource type="Texture2D" uid="uid://5ojt1f8ae1d" path="res://assets/icons/UI/_dd3cee7e-7fb0-423b-840e-5749334571bd.jpg" id="6_rewgk"]
@@ -26,11 +30,129 @@ offset_right = 1080.0
 offset_bottom = 1920.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="LogContainer" parent="VBoxContainer" instance=ExtResource("1_h0vyj")]
-custom_minimum_size = Vector2(128, 256)
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("1_wh8tf")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vw2et")
+theme_override_font_sizes/font_size = 32
+text = "Jour"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_vw2et")
+theme_override_font_sizes/font_size = 36
+text = "12:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_vw2et")
+theme_override_font_sizes/font_size = 32
+text = "Année"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LogContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_h0vyj")]
+custom_minimum_size = Vector2(100, 136)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="UpArrow" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("2_rq6gf")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="LeftArrow" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_bsd53")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RightArrow" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("3_bsd53")
+ignore_texture_size = true
+stretch_mode = 5
+flip_h = true
+
+[node name="DownArrow" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("2_rq6gf")
+ignore_texture_size = true
+stretch_mode = 5
+flip_v = true
 
 [node name="MainTextContainer" parent="VBoxContainer" instance=ExtResource("1_aqkcx")]
 layout_mode = 2
