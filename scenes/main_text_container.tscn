@@ -14,11 +14,11 @@ shader_parameter/active = false
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhfd4"]
 bg_color = Color(0, 0, 0, 1)
 draw_center = false
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.498039, 0.360784, 0.152941, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
 
 [node name="MainTextContainer" type="MarginContainer"]
 material = SubResource("ShaderMaterial_bbxu5")
@@ -30,7 +30,6 @@ size_flags_vertical = 3
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-self_modulate = Color(1, 1, 1, 0)
 use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
