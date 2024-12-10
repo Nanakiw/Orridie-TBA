@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://fci5nxt5fv6n"]
+[gd_scene load_steps=18 format=3 uid="uid://fci5nxt5fv6n"]
 
 [ext_resource type="PackedScene" uid="uid://bi5137ph2kw4c" path="res://scenes/main_text_container.tscn" id="1_aqkcx"]
 [ext_resource type="PackedScene" uid="uid://duqfl3yhjvbbe" path="res://scenes/margin_container.tscn" id="1_h0vyj"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://ce2n7u11rapgq" path="res://assets/icons/UI/character.png" id="3_0rd13"]
 [ext_resource type="Texture2D" uid="uid://cihv8hhai0kv6" path="res://assets/icons/UI/left_arrow.png" id="3_bsd53"]
 [ext_resource type="Texture2D" uid="uid://ciqf0d3lckyja" path="res://assets/icons/UI/_35175d21-0b8d-4411-94a8-d8a837fe8a50.jpg" id="4_g8sh0"]
+[ext_resource type="Script" path="res://scenes/MainLog.gd" id="5_2nsty"]
 [ext_resource type="Texture2D" uid="uid://23bod6rxxwq8" path="res://assets/icons/UI/_12d1e27b-e1b3-4a5a-a511-d60ebfc47e31.jpg" id="5_6meb0"]
+[ext_resource type="Script" path="res://scenes/MainTextContainer.gd" id="6_013yb"]
 [ext_resource type="Texture2D" uid="uid://5ojt1f8ae1d" path="res://assets/icons/UI/_dd3cee7e-7fb0-423b-840e-5749334571bd.jpg" id="6_rewgk"]
 
 [sub_resource type="Gradient" id="Gradient_3ay3q"]
@@ -17,6 +19,24 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8131h"]
 gradient = SubResource("Gradient_3ay3q")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l18fk"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4uke"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
 
 [node name="Ingame" type="Node2D"]
 
@@ -98,32 +118,187 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer"]
+[node name="TopContainer" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Main/VBoxContainer/HBoxContainer"]
+[node name="CharactersContainer" type="MarginContainer" parent="VBoxContainer/Main/VBoxContainer/TopContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer/HBoxContainer/GridContainer"]
+[node name="Character" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Main/VBoxContainer/HBoxContainer/GridContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character"]
+custom_minimum_size = Vector2(56, 56)
 layout_mode = 2
 texture = ExtResource("3_0rd13")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer/HBoxContainer/GridContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_vw2et")
+theme_override_font_sizes/font_size = 40
+text = "Character1"
+
+[node name="Character2" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character2"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("3_0rd13")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_vw2et")
-theme_override_font_sizes/font_size = 32
-text = "Character"
+theme_override_font_sizes/font_size = 40
+text = "Character2"
+
+[node name="Character3" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character3"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("3_0rd13")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vw2et")
+theme_override_font_sizes/font_size = 40
+text = "Character3"
+
+[node name="Character4" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character4"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("3_0rd13")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vw2et")
+theme_override_font_sizes/font_size = 40
+text = "Character4"
+
+[node name="Character5" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character5"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("3_0rd13")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vw2et")
+theme_override_font_sizes/font_size = 40
+text = "Character5"
+
+[node name="Character6" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character6"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("3_0rd13")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vw2et")
+theme_override_font_sizes/font_size = 40
+text = "Character6"
+
+[node name="Character7" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character7"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+texture = ExtResource("3_0rd13")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/Main/VBoxContainer/TopContainer/CharactersContainer/GridContainer/Character7"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vw2et")
+theme_override_font_sizes/font_size = 40
+text = "Character7"
+
+[node name="MapContainer" type="Panel" parent="VBoxContainer/Main/VBoxContainer/TopContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_l18fk")
 
 [node name="MainTextContainer" parent="VBoxContainer/Main/VBoxContainer" instance=ExtResource("1_aqkcx")]
 layout_mode = 2
+
+[node name="ChoicesContainer" type="MarginContainer" parent="VBoxContainer/Main/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Main/VBoxContainer/ChoicesContainer"]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s4uke")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Main/VBoxContainer/ChoicesContainer/PanelContainer"]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 54
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 54
+theme_override_constants/margin_bottom = 8
+
+[node name="Log" type="ScrollContainer" parent="VBoxContainer/Main/VBoxContainer/ChoicesContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("5_2nsty")
+
+[node name="MainTextContainer" type="VBoxContainer" parent="VBoxContainer/Main/VBoxContainer/ChoicesContainer/PanelContainer/MarginContainer/Log"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("6_013yb")
 
 [node name="Footer" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer"]
 layout_mode = 2
@@ -133,9 +308,10 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(100, 136)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 8
 
 [node name="ArrowsContainer" type="MarginContainer" parent="VBoxContainer/Main/VBoxContainer/Footer"]
-custom_minimum_size = Vector2(192, 0)
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Main/VBoxContainer/Footer/ArrowsContainer"]
@@ -144,7 +320,7 @@ theme_override_constants/separation = 0
 alignment = 1
 
 [node name="UpArrow" type="TextureButton" parent="VBoxContainer/Main/VBoxContainer/Footer/ArrowsContainer/VBoxContainer"]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -154,12 +330,11 @@ stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Main/VBoxContainer/Footer/ArrowsContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 48
+theme_override_constants/separation = 96
 alignment = 1
 
 [node name="LeftArrow" type="TextureButton" parent="VBoxContainer/Main/VBoxContainer/Footer/ArrowsContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -168,7 +343,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="RightArrow" type="TextureButton" parent="VBoxContainer/Main/VBoxContainer/Footer/ArrowsContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -178,7 +353,7 @@ stretch_mode = 5
 flip_h = true
 
 [node name="DownArrow" type="TextureButton" parent="VBoxContainer/Main/VBoxContainer/Footer/ArrowsContainer/VBoxContainer"]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
